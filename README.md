@@ -158,7 +158,9 @@ ALTER TABLE IF EXISTS public."Users"
 
 
 
-3.- renombrar el archivo .env.sample a .env
+3.- renombrar el archivo .env.sample a .env 
+
+y colocar su passsword de base de datos PostgreSQL 
 
 
 4.- npm install
