@@ -119,16 +119,29 @@ class HistoryService {
           console.log('✅ Criptomonedas replicadas exitosamente');
         } catch (error) {
           await transaction.rollback();
-          console.error('❌ Error replicando criptomonedas:', error);
-          throw error;
+          //console.error('❌ Error replicando criptomonedas:', error);
+          //throw error;
         }
       }
 
 
   async fullReplication() {
+    
     console.log(`[${new Date().toISOString()}] Iniciando replicación histórica`);
     await this.replicateCurrencies();
     await this.replicateCryptos();
+
+    const currencyCount = await Currency.count();
+          const cryptoCount = await CryptoCurrency.count();
+        if(currencyCount==0 && cryptoCount==1){
+            console.log('✅ Proceso de limpieza completado: '+ currencyCount+" -- "+cryptoCount);
+            await require('../scripts/seedTestDataDel')();
+        }else {
+
+          await require('../scripts/seedTestDataDel')();
+
+        }
+    
   }
 
   startScheduledReplication() {
@@ -140,6 +153,8 @@ class HistoryService {
       this.fullReplication();
     }, this.replicationInterval);
   }
+
+  
 }
 
 module.exports = new HistoryService();

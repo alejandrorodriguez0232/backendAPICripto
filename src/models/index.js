@@ -17,7 +17,7 @@ const Currency = sequelize.define('Currency', {
   symbol: DataTypes.STRING(5)
 });
 
-const CryptoCurrency = sequelize.define('CryptoCurrency', {
+const CryptoCurrency = sequelize.define('CryptoCurrencies', {
   name: DataTypes.STRING,
   symbol: DataTypes.STRING(10),
   currentPrice: DataTypes.DECIMAL(20, 8)

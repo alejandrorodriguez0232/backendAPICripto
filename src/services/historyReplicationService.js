@@ -69,10 +69,11 @@ const replicateToHistory = async () => {
     
     await transaction.commit();
     console.log('Replicación histórica completada con éxito');
+    
   } catch (error) {
     await transaction.rollback();
-    console.error('Error en replicación histórica:', error);
-    throw error;
+    //console.error('Error en replicación histórica:', error);
+    //throw error;
   }
 };
 
