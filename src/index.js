@@ -4,6 +4,7 @@ const { sequelize } = require('./models'); // Importar sequelize desde models
 const authRoutes = require('./routes/authRoutes');
 const currencyRoutes = require('./routes/currencyRoutes');
 const cryptoRoutes = require('./routes/cryptoRoutes');
+const replicationRoutes = require('./routes/replicationRoutes'); // Nueva línea
 const errorHandler = require('./middlewares/errorHandler');
 const { setupReplication } = require('./services/historyReplicationService');
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/moneda', currencyRoutes);
 app.use('/criptomoneda', cryptoRoutes);
+app.use('/replicacion', replicationRoutes); // Nueva línea
 
 // Manejo de errores
 app.use(errorHandler);

@@ -205,3 +205,25 @@ bash
 curl -X GET "http://localhost:3000/criptomoneda?moneda=USD" \
   -H "Authorization: Bearer <TOKEN>"
 
+
+---REPLICACION 
+node src/scripts/testReplication.js
+
+curl -X POST http://localhost:3000/replicacion/replicar \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Content-Type: application/json"
+Respuesta Exitosa (200 OK):
+
+json
+{
+    "success": true,
+    "message": "Réplica histórica completada"
+}
+Respuesta de Error (500 Internal Server Error):
+
+json
+{
+  "success": false,
+  "message": "Error al ejecutar la réplica histórica",
+  "error": "Detalle del error..."
+}
